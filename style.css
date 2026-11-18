@@ -56,7 +56,8 @@ h2.section{font-family:var(--serif);font-weight:500;font-size:34px;letter-spacin
 /* about */
 .about{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
 .about p{margin-bottom:16px}
-.side{display:flex;flex-direction:column;gap:22px}
+.side{display:flex;justify-content:center;align-items:flex-start}
+.fact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
 .headshot{width:100%;max-width:300px;height:auto;border-radius:16px;border:1px solid var(--line)}
 .facts{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px}
 .facts h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
@@ -116,7 +117,7 @@ footer .small{margin-top:40px;font-size:13px;color:var(--muted)}
   nav a{margin-left:16px}
   .card{grid-template-columns:1fr}
   .card .art{min-height:180px}
-  .about,.skills{grid-template-columns:1fr}
+  .about,.skills,.fact-row{grid-template-columns:1fr}
   .meta{grid-template-columns:1fr 1fr}
   .cs-grid{grid-template-columns:1fr;gap:10px}
   .process,.recs{grid-template-columns:1fr 1fr}
