@@ -4,9 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Leaving Your Stuff Behind — Ryan Lee</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <style>
   .phase{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:4px 0 6px}
   h3.sub{font-family:var(--serif);font-weight:500;font-size:22px;margin:26px 0 10px}
@@ -15,18 +13,18 @@
 
   /* brainstorm map */
   .map{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-  .map .center{grid-column:1/-1;background:var(--ink);color:var(--bg);border-radius:999px;padding:14px 22px;text-align:center;font-family:var(--serif);font-size:18px}
+  .map .center{grid-column:1/-1;background:var(--accent);color:#fff;border-radius:999px;padding:14px 22px;text-align:center;font-family:var(--serif);font-size:18px}
   .branch{border:1px dashed var(--line);border-radius:14px;padding:14px}
   .branch b{display:block;font-size:14px;margin-bottom:8px}
   .chips{display:flex;flex-wrap:wrap;gap:6px}
-  .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;background:#f1eee9}
+  .chip{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--raise)}
 
   /* sticky boards */
   .board{display:grid;gap:14px}
-  .cluster{background:#f6f3ee;border-radius:14px;padding:14px}
+  .cluster{background:var(--raise);border-radius:14px;padding:14px}
   .cluster > b{display:block;font-size:13px;margin-bottom:10px}
   .stickies{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
-  .sticky{font-size:12.5px;line-height:1.45;padding:12px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .sticky{color:#1d1d1f;font-size:13px;line-height:1.45;padding:12px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
   .s-y{background:#fff2a8}.s-g{background:#c9efc9}.s-v{background:#e3d7fb}.s-o{background:#ffd9b8}.s-b{background:#cfe4ff}.s-r{background:#ffc9c4}
   .sticky small{display:block;margin-top:6px;color:#555;font-size:11.5px}
 
@@ -42,7 +40,7 @@
   .track{position:relative;height:22px}
   .bar{height:22px;border-radius:0 4px 4px 0;background:#d6453d;min-width:2px}
   .bar.blue{background:#3a6fc4}
-  .bar.gray{background:#c9c4bc}
+  .bar.gray{background:#4a4a52}
   .val{position:absolute;top:2px;font-size:12.5px;color:var(--ink);white-space:nowrap}
   .pair .track{height:12px}.pair .bar{height:12px}.pair .val{top:-2px}
   .pair-gap{height:4px}
