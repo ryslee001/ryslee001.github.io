@@ -7,6 +7,75 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=3">
+<style>
+  .phase{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:4px 0 6px}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:22px;margin:26px 0 10px}
+  .figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:14px 0 6px;max-width:760px}
+  figcaption{font-size:13px;color:var(--muted);margin:8px 0 22px;max-width:760px}
+
+  /* brainstorm map */
+  .map{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .map .center{grid-column:1/-1;background:var(--ink);color:var(--bg);border-radius:999px;padding:14px 22px;text-align:center;font-family:var(--serif);font-size:18px}
+  .branch{border:1px dashed var(--line);border-radius:14px;padding:14px}
+  .branch b{display:block;font-size:14px;margin-bottom:8px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;background:#f1eee9}
+
+  /* sticky boards */
+  .board{display:grid;gap:14px}
+  .cluster{background:#f6f3ee;border-radius:14px;padding:14px}
+  .cluster > b{display:block;font-size:13px;margin-bottom:10px}
+  .stickies{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+  .sticky{font-size:12.5px;line-height:1.45;padding:12px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .s-y{background:#fff2a8}.s-g{background:#c9efc9}.s-v{background:#e3d7fb}.s-o{background:#ffd9b8}.s-b{background:#cfe4ff}.s-r{background:#ffc9c4}
+  .sticky small{display:block;margin-top:6px;color:#555;font-size:11.5px}
+
+  /* stats + charts */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 6px;max-width:760px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .stat .num{font-family:var(--serif);font-size:34px;line-height:1}
+  .stat .lbl{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.45}
+  .chart h4{font-size:15px;font-weight:600;margin-bottom:4px}
+  .chart .note{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .bars{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:8px 12px;align-items:center}
+  .bars .lab{font-size:13.5px;text-align:right}
+  .track{position:relative;height:22px}
+  .bar{height:22px;border-radius:0 4px 4px 0;background:#d6453d;min-width:2px}
+  .bar.blue{background:#3a6fc4}
+  .bar.gray{background:#c9c4bc}
+  .val{position:absolute;top:2px;font-size:12.5px;color:var(--ink);white-space:nowrap}
+  .pair .track{height:12px}.pair .bar{height:12px}.pair .val{top:-2px}
+  .pair-gap{height:4px}
+  .legend{display:flex;gap:16px;font-size:13px;color:var(--muted);margin:0 0 14px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .bar[title]:hover{filter:brightness(.92)}
+  @media (max-width:820px){.map,.stats{grid-template-columns:1fr}}
+
+  .persona{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:14px 0 6px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .pcard .name{font-family:var(--serif);font-size:24px;line-height:1.1}
+  .pcard .tag2{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:4px 0 12px}
+  .pcard .pq{font-family:var(--serif);font-size:17px;line-height:1.4;margin-bottom:14px}
+  .pcard h5{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+  .pcard ul{margin:0 0 0 18px;font-size:14px}
+  .pcard li{margin-bottom:4px}
+  .journey{display:grid;grid-template-columns:84px repeat(5,1fr);gap:6px;font-size:12.5px;line-height:1.4;min-width:640px}
+  .jwrap{overflow-x:auto;max-width:100%}
+  .cs-grid > div{min-width:0}
+  .journey .h{background:var(--ink);color:var(--bg);border-radius:8px;padding:8px;font-weight:600;text-align:center}
+  .journey .r{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 4px}
+  .journey .c{background:#f6f3ee;border-radius:8px;padding:8px}
+  .journey .q{background:#fff2a8}
+  .journey .e{text-align:center;font-weight:600}
+  .e1{background:#d9efe0}.e2{background:#fbe9c9}.e3{background:#fbe0cf}.e4{background:#f6c9c4}.e5{background:#d9efe0}
+  .journey .o{background:#e3eefc}
+  .merge{display:grid;grid-template-columns:1fr 40px 1fr;gap:10px;align-items:center;max-width:760px}
+  .merge .col{display:grid;gap:8px}
+  .merge .t{background:#f6f3ee;border-radius:8px;padding:8px 10px;font-size:13px}
+  .merge .big{background:var(--ink);color:var(--bg);border-radius:12px;padding:14px;font-family:var(--serif);font-size:16px;line-height:1.35}
+  .merge .arrow{text-align:center;font-size:22px;color:var(--muted)}
+  @media (max-width:820px){.persona,.merge{grid-template-columns:1fr}.merge .arrow{transform:rotate(90deg)}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -23,29 +92,111 @@
     <div class="meta">
       <div><span>Role</span>Researcher, co-author</div>
       <div><span>Team</span>4 researchers</div>
-      <div><span>Methods</span>Interviews, coding, personas</div>
+      <div><span>Methods</span>Interviews, coding, personas, journey map</div>
       <div><span>Tools</span>Figma, FigJam</div>
     </div>
   </div>
 
   <div class="cs">
+
     <div class="cs-grid">
       <h2>The problem</h2>
       <div>
-        <p>Late-night trips home after drinking combine several risks: impaired judgment, unreliable transit, phones that are hard to use and streets that don't feel safe. UW offers services meant to help, but we wanted to understand what actually happens on the way home and where the existing support falls short.</p>
+        <p>Late-night trips home after drinking combine several risks: impaired judgment, unreliable transit, phones that are hard to use and streets that don't feel safe. UW already offers services meant to help, like NightRide and campus safety lines. We wanted to understand what actually happens on the way home, and why those services so often go unused.</p>
       </div>
     </div>
 
     <div class="cs-grid">
-      <h2>Approach</h2>
+      <h2>My role</h2>
       <div>
-        <div class="process">
-          <div class="step"><span class="n">01</span><b>Protocol</b><small>Interview guide with a rationale for each question, plus inclusion and exclusion criteria</small></div>
-          <div class="step"><span class="n">02</span><b>Interviews</b><small>5 anonymous interviews with UW students aged 21 and up, in person and online</small></div>
-          <div class="step"><span class="n">03</span><b>Coding</b><small>Each of us coded our own interviews, then we merged the codes into themes in FigJam</small></div>
-          <div class="step"><span class="n">04</span><b>Synthesis</b><small>Two personas with a source for every claim, plus a user journey map</small></div>
+        <ul>
+          <li>Co-designed the interview protocol and its inclusion and exclusion criteria with the team.</li>
+          <li>Conducted two of the five interviews and coded both transcripts on my own in FigJam.</li>
+          <li>Grouped my codes into individual themes, then worked with the team to merge everyone's themes into the final two.</li>
+          <li>Co-wrote the report, including the results and reflection.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Planning</h2>
+      <div>
+        <p class="phase">Research questions</p>
+        <ul>
+          <li>What risks do UW undergraduates face when going home late at night?</li>
+          <li>When students become, or encounter, someone who is intoxicated, how comfortable and knowledgeable are they about taking care of themselves or others?</li>
+          <li>What challenges do students face using their phones and transportation services after drinking?</li>
+        </ul>
+        <p class="phase" style="margin-top:22px">Who we talked to</p>
+        <p>UW students aged 21 or older who had been to a social event with alcohol and had used a rideshare or transit app. We excluded anyone under 21, anyone who wasn't a UW student, and anyone without a history of these events. Everyone was open to any gender, race or economic background.</p>
+        <p class="phase" style="margin-top:22px">The protocol</p>
+        <p>Eight questions, each with a written rationale. They moved from a concrete recent night toward reflection and ideas:</p>
+        <ol style="margin-left:20px;max-width:64ch">
+          <li>Tell me about the last time you drank alcohol at a party. How did you get home, and how safe did you feel from 1 to 10?</li>
+          <li>How do you choose who you go out with? What safety habits does your group have?</li>
+          <li>How do you use your phone to get home after drinking? What's gone wrong?</li>
+          <li>What do you know about safety services on campus or in the U District? Have you used them?</li>
+          <li>What would you change to make getting home safer?</li>
+        </ol>
+        <p>Because the topic is sensitive, interviews were anonymous. Participants could skip any question, and we asked before recording. Each participant gets a letter-number code, such as A1 or M2.</p>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Interviews</h2>
+      <div>
+        <p class="phase">5 interviews · 15–25 minutes · in person and online</p>
+        <p>We each interviewed students we knew, which made it easier to talk openly about drinking. I interviewed A1, who goes out to bars most weeks with a large group of roommates, and M2, who goes to house parties with one or two close friends. Their nights looked very different, which helped the analysis.</p>
+
+        <h3 class="sub">My individual coding</h3>
+        <p>I broke each transcript into quotes, wrote a short code under each one, then grouped the codes into themes for that participant.</p>
+        <div class="figure">
+          <div class="board">
+            <div class="cluster"><b>A1: themes from my coding</b>
+              <div class="stickies">
+                <div class="sticky s-g"><b>Distance decides the plan</b><br>“If we're at Earl's on the Ave, then we're walking home… If we're in Cap Hill, we're probably linking. If we're in Ballard, then you have to Uber.”</div>
+                <div class="sticky s-g"><b>An unspoken group protocol</b><br>“When we leave, it's like, everyone's leaving, or if someone's leaving early, then everyone goes with them.”</div>
+                <div class="sticky s-g"><b>Nobody is in charge</b><br>“Sometimes I'm the one ordering the Uber… I wouldn't say that's always the case.”</div>
+                <div class="sticky s-g"><b>Distrust of authorities</b><br>“They were like, ‘We'll try to get there if we can.’ And they never showed.”</div>
+              </div></div>
+            <div class="cluster"><b>M2: themes from my coding</b>
+              <div class="stickies">
+                <div class="sticky s-r"><b>Friend-driven, not party-driven</b><br>“If I don't know people that are at the party, it's like, ‘Why am I going?’”</div>
+                <div class="sticky s-r"><b>Stepping in only at obvious signs</b><br>“I had to literally grab my friend's drink out of his hand and chuck it, because he couldn't walk.”</div>
+                <div class="sticky s-r"><b>Unreliable ways home</b><br>“My bus said that I was going to be a couple minutes late, and then… it drove by me. So I kind of have a 50-50 trust with that app.”</div>
+                <div class="sticky s-r"><b>Campus resources feel risky</b><br>“If it's a UW resource… they're probably under the assumption that they're gonna get in trouble with the school.”</div>
+              </div></div>
+          </div>
         </div>
-        <p style="margin-top:22px">Because the topic is sensitive, we kept participants anonymous, told them they could skip any question, and asked permission before recording.</p>
+        <figcaption>Selected themes and quotes from my coding of A1 and M2, recreated from the team's FigJam board.</figcaption>
+
+        <h3 class="sub">Merging themes as a team</h3>
+        <p>Together we had a dozen narrow themes. Laid side by side, many of them weren't separate problems. One theme was often the cause of another. So we grouped them into two broader themes, each pairing a circumstance with its effect.</p>
+        <div class="figure">
+          <div class="merge">
+            <div class="col">
+              <div class="t">Stepping in only at obvious signs</div>
+              <div class="t">Harm is hard to see until it's serious</div>
+              <div class="t">Peer pressure drives heavier drinking</div>
+              <div class="t">Safety rests on an unspoken group protocol</div>
+              <div class="t">Friends forget to confirm they got home</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="big">Participants rely on friends to catch what they can't see</div>
+          </div>
+          <div class="merge" style="margin-top:18px">
+            <div class="col">
+              <div class="t">Distance decides the plan home</div>
+              <div class="t">Cost pushes students to walk or wait</div>
+              <div class="t">Phone, app and pickup problems</div>
+              <div class="t">Campus resources feel vague or risky</div>
+              <div class="t">Distrust of police response</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="big">Hard trips home, underused safety services</div>
+          </div>
+        </div>
+        <figcaption>How the team's individual themes merged into the two final themes.</figcaption>
       </div>
     </div>
 
@@ -54,14 +205,19 @@
       <div>
         <div class="finding">
           <h3>1. Friends are the safety net, but nobody is in charge of it</h3>
-          <p>Participants said they only step in when a friend shows obvious warning signs, like being unable to walk. By that point the situation is already serious. No one is assigned to look out for the group, so it's possible for someone to go unaccounted for until the next morning.</p>
-          <blockquote>“Sometimes people forget, and then someone asks the next morning if they made it home.”</blockquote>
+          <p>Participants said they only step in when a friend shows obvious warning signs, like being unable to walk or losing consciousness. By that point the situation is already serious. Groups have habits, like leaving together, but no one is assigned to look out for everyone, and peer pressure can push drinking past people's limits.</p>
+          <blockquote>“Sometimes people forget, and then someone asks the next morning if they made it home.” — P4</blockquote>
           <p>Most existing safety apps assume people will notice they need help and ask for it. Our findings suggest that's exactly where things break down.</p>
         </div>
         <div class="finding">
-          <h3>2. The services exist, but students don't trust them</h3>
-          <p>Every trip home involved trade-offs. The light rail had already closed, the bus app couldn't be trusted, Uber's pickup pin kept moving and it was hard to scan a scooter in the rain. A campus service like NightRide covers many of these needs on paper, but students either barely knew about it or were afraid that using a school service would get them in trouble.</p>
-          <blockquote>“If it's a UW resource that is for every student, they're probably under the assumption that they're gonna get in trouble with the school because of it.”</blockquote>
+          <h3>2. The trip home is a series of trade-offs</h3>
+          <p>How students get home depends on distance, cost and how drunk they feel. Each option has a catch. The light rail closes before the bars do, the bus app can't be trusted, Uber's pickup pin keeps moving, and late rides cost $25–35. One participant stayed out an extra hour rather than pay for a ride.</p>
+          <blockquote>“Every time I've gone to a bar in Capitol Hill, the light rail closes before I can get back.” — D5</blockquote>
+        </div>
+        <div class="finding">
+          <h3>3. The services exist, but students don't trust them</h3>
+          <p>NightRide covers many of these needs on paper. But students barely knew how it worked, forgot it existed, or had heard it was unreliable. Others avoided anything tied to the school or police, out of fear of getting themselves or a friend in trouble.</p>
+          <blockquote>“I feel like a lot more students would be talking about it… a good way to get back without feeling embarrassed or weird about it.” — M2</blockquote>
         </div>
       </div>
     </div>
@@ -69,11 +225,48 @@
     <div class="cs-grid">
       <h2>Personas</h2>
       <div>
-        <p>We grouped participants by how they behave, not by demographics. We also listed the source for every line in each persona, and labeled assumptions as assumptions.</p>
-        <div class="recs" style="grid-template-columns:1fr 1fr">
-          <div class="rec"><b>Riley, the caretaker</b><p>Drinks less to make sure everyone gets home. Counts heads and orders the ride. Needs a quick way to account for the whole group and a way to get help that won't get a friend in trouble.</p></div>
-          <div class="rec"><b>Jordan, the budget-minded one</b><p>Picks a ride based on cost and how drunk they feel. Feels much less safe when alone. Wants one screen that compares the options and clear information about campus rides.</p></div>
+        <p>We grouped participants by how they behave, not by demographics. Every line in each persona lists the participants it came from, and anything nobody actually said is labeled as an assumption.</p>
+        <div class="persona">
+          <div class="pcard">
+            <div class="name">Riley</div><div class="tag2">The anchor</div>
+            <div class="pq">“I drink less so I can make sure everyone gets home safely.”</div>
+            <h5>About</h5>
+            <ul><li>Goes out with a small circle of long-time friends</li><li>Counts heads, takes the cup away, orders the ride</li><li>Has walked or carried a drunk friend home</li></ul>
+            <h5>Needs</h5>
+            <ul><li>A fast way to account for everyone before leaving</li><li>A way to set the right address for a friend too drunk to do it</li><li>Help that won't get a friend in trouble</li></ul>
+            <h5>Pain points</h5>
+            <ul><li>Can't control how much others drink</li><li>Slow to get a group out the door</li><li>Avoids campus help out of fear of trouble</li></ul>
+          </div>
+          <div class="pcard">
+            <div class="name">Jordan</div><div class="tag2">The budget-minded one</div>
+            <div class="pq">“I want to know I always have an option that doesn't cost $30.”</div>
+            <h5>About</h5>
+            <ul><li>Goes out a couple of times a month, usually to tipsy</li><li>Picks walk, bike, bus or Uber by cost and how drunk they feel</li><li>Feels much less safe alone: about a 7 out of 10 with friends, a 4–5 alone</li></ul>
+            <h5>Needs</h5>
+            <ul><li>One screen comparing cost and time across options</li><li>Clear info on campus rides: coverage, hours, no punishment</li><li>Well-lit routes and a safe place to wait</li></ul>
+            <h5>Pain points</h5>
+            <ul><li>Late rides cost $25–35</li><li>Hard to find the Uber pickup spot</li><li>Dead phone or wrong address can derail the trip</li></ul>
+          </div>
         </div>
+        <figcaption>Summarized from our persona cards in Figma. The full cards also list each persona's motivations, personality traits and where the data conflicted.</figcaption>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Journey map</h2>
+      <div>
+        <p>Riley's night, from saying yes to the party to confirming everyone got home. Stress builds at the moment the group tries to leave and peaks on the way home. That's where every option has a catch.</p>
+        <div class="figure jwrap" style="max-width:100%">
+          <div class="journey">
+            <div></div><div class="h">Motive</div><div class="h">Drinking</div><div class="h">Heading out</div><div class="h">Getting home</div><div class="h">Check in</div>
+            <div class="r">Actions</div><div class="c">Says yes to a house party with long-time friends</div><div class="c">Drinks less than the group; takes the cup from a friend who can barely walk</div><div class="c">Counts heads, gets people moving</div><div class="c">Orders the ride, or walks the friend home</div><div class="c">Texts to confirm everyone got home; lets friends stay over</div>
+            <div class="r">Thinking</div><div class="c q">“If something happens, someone can help me help my friend.”</div><div class="c q">“I can't really control how much they're drinking, so I'll keep an eye out.”</div><div class="c q">“I need to know where everyone is before we leave.”</div><div class="c q">“The Link is closed… and I don't want to call campus help because I could face repercussions.”</div><div class="c q">“Okay, everyone's home safe. Now I can relax.”</div>
+            <div class="r">Emotion</div><div class="c e e1">Relaxed</div><div class="c e e2">Vigilant</div><div class="c e e3">Hurried</div><div class="c e e4">Most stressed</div><div class="c e e5">Relieved</div>
+            <div class="r">Pain points</div><div class="c">Knows some friends drink a lot</div><div class="c">Hard to know when to step in</div><div class="c">Slow to get a group out</div><div class="c">Friend unresponsive; avoids campus help</div><div class="c">“Text when home” habits fade after a few weeks</div>
+            <div class="r">Opportunity</div><div class="c o">Set up a designated driver or carpool before the party</div><div class="c o">A low-key way for the group to flag that someone's had enough</div><div class="c o">A quick head count before anyone leaves</div><div class="c o">A ride option that doesn't judge</div><div class="c o">An automatic “got home” check-in that doesn't depend on habit</div>
+          </div>
+        </div>
+        <figcaption>Recreated from the team's journey map for Riley in FigJam. On a small screen, scroll sideways.</figcaption>
       </div>
     </div>
 
@@ -81,14 +274,16 @@
       <h2>Design direction</h2>
       <div>
         <p><b>Participants want a service that eases fear of consequences and promotes trust through non-direct affiliation with the university.</b> The opportunity is help that's easy to use and judgment-free, like a campus shuttle you tap onto with a Husky ID that doesn't ask who you are, plus tools that help groups check in on each other before the warning signs get serious.</p>
+        <p>Participants suggested pieces of this themselves: a tap-on shuttle that doesn't ask who you are, one screen that compares rides, flexible pickup spots, and an automatic “I'm home” reminder with control over who sees their location.</p>
       </div>
     </div>
 
     <div class="cs-grid">
       <h2>Reflection</h2>
       <div>
-        <p>Five interviews can only show signals, not prove what's true for all students. We read the findings that way and plan to test them.</p>
-        <p>The hardest part was the thematic analysis. We ended up merging narrow codes into two broad cause-and-effect themes, which made the overall argument clearer but risked losing the details of each person's story. We dealt with that by pairing every broad claim with participants' own words.</p>
+        <p>Five interviews can only show signals, not prove what's true for all students. Our participants were people we knew, most went out with a steady friend group, and none commuted to campus. We read the findings that way and plan to test them.</p>
+        <p>The hardest part was the thematic analysis. Merging narrow codes into two broad cause-and-effect themes made the overall argument clearer, but it risked losing the details that made each person's story meaningful. We dealt with that by pairing every broad claim with participants' own words, and by citing a source for every line in the personas.</p>
+        <p>As a team, we also learned that waiting on each other's sections slowed the report down. Next time we'll set a clearer timeline and work in parallel from the start.</p>
       </div>
     </div>
   </div>
