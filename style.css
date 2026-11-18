@@ -22,7 +22,7 @@ nav a:hover{color:var(--ink)}
 /* hero */
 .hero{padding:110px 0 80px}
 .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
-.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.6vw,64px);line-height:1.08;letter-spacing:-.02em;max-width:16ch}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,44px);line-height:1.08;letter-spacing:-.02em;max-width:16ch}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero p.lede{margin-top:26px;font-size:20px;color:var(--muted);max-width:56ch}
 .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
