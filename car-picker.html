@@ -56,9 +56,9 @@ fuel_score  = normalize(comb08_mpg, 10, 55) → 0–100</div>
       <h2>Design decisions</h2>
       <div>
         <ul>
-          <li><b>Recalls count for more per record than complaints.</b> A recall is a confirmed defect, while a complaint is an owner's report that no one has verified. Complaints matter in large numbers, so they get a gentler penalty that adds up.</li>
-          <li><b>Scores instead of raw data.</b> Other tools I looked at, including a multi-API VIN decoder and an NHTSA chat assistant, show raw records. Mine reduces everything to two numbers you can compare side by side.</li>
-          <li><b>A two-step lookup with a fallback.</b> The fuel economy API needs a vehicle-ID lookup before it returns full data. If no variant matches, the app handles it gracefully instead of crashing.</li>
+          <li>A recall is a confirmed defect, while a complaint is an owner's report that no one has verified. Complaints matter in large numbers, so they get a gentler penalty that adds up.</li>
+          <li>Other tools I looked at, including a multi-API VIN decoder and an NHTSA chat assistant, show raw records. Mine reduces everything to two numbers you can compare side by side.</li>
+          <li>The fuel economy API needs a vehicle-ID lookup before it returns full data. If no variant matches, the app handles it gracefully instead of crashing.</li>
         </ul>
       </div>
     </div>
