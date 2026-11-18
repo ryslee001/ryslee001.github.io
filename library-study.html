@@ -7,6 +7,50 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=3">
+<style>
+  .phase{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:4px 0 6px}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:22px;margin:26px 0 10px}
+  .figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:14px 0 6px;max-width:760px}
+  figcaption{font-size:13px;color:var(--muted);margin:8px 0 22px;max-width:760px}
+
+  /* brainstorm map */
+  .map{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .map .center{grid-column:1/-1;background:var(--ink);color:var(--bg);border-radius:999px;padding:14px 22px;text-align:center;font-family:var(--serif);font-size:18px}
+  .branch{border:1px dashed var(--line);border-radius:14px;padding:14px}
+  .branch b{display:block;font-size:14px;margin-bottom:8px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;background:#f1eee9}
+
+  /* sticky boards */
+  .board{display:grid;gap:14px}
+  .cluster{background:#f6f3ee;border-radius:14px;padding:14px}
+  .cluster > b{display:block;font-size:13px;margin-bottom:10px}
+  .stickies{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+  .sticky{font-size:12.5px;line-height:1.45;padding:12px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .s-y{background:#fff2a8}.s-g{background:#c9efc9}.s-v{background:#e3d7fb}.s-o{background:#ffd9b8}.s-b{background:#cfe4ff}.s-r{background:#ffc9c4}
+  .sticky small{display:block;margin-top:6px;color:#555;font-size:11.5px}
+
+  /* stats + charts */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 6px;max-width:760px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .stat .num{font-family:var(--serif);font-size:34px;line-height:1}
+  .stat .lbl{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.45}
+  .chart h4{font-size:15px;font-weight:600;margin-bottom:4px}
+  .chart .note{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .bars{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:8px 12px;align-items:center}
+  .bars .lab{font-size:13.5px;text-align:right}
+  .track{position:relative;height:22px}
+  .bar{height:22px;border-radius:0 4px 4px 0;background:#d6453d;min-width:2px}
+  .bar.blue{background:#3a6fc4}
+  .bar.gray{background:#c9c4bc}
+  .val{position:absolute;top:2px;font-size:12.5px;color:var(--ink);white-space:nowrap}
+  .pair .track{height:12px}.pair .bar{height:12px}.pair .val{top:-2px}
+  .pair-gap{height:4px}
+  .legend{display:flex;gap:16px;font-size:13px;color:var(--muted);margin:0 0 14px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .bar[title]:hover{filter:brightness(.92)}
+  @media (max-width:820px){.map,.stats{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -17,72 +61,219 @@
 <main class="wrap">
   <div class="cs-hero">
     <a class="back" href="index.html#work">← All work</a>
-    <p class="eyebrow">HCDE 313 · User Research · Spring 2026</p>
+    <p class="eyebrow">HCDE 313 · Introduction to User Research · Spring 2026</p>
     <h1>Leaving your stuff behind: trust and safety in campus study spaces</h1>
     <p class="q">How can we help students feel safe temporarily leaving their belongings unattended in UW academic spaces?</p>
     <div class="meta">
       <div><span>Role</span>Team lead, researcher</div>
       <div><span>Team</span>4 researchers</div>
       <div><span>Duration</span>10 weeks</div>
-      <div><span>Tools</span>Figma, Excel, Google Forms</div>
+      <div><span>Methods</span>Field study, interviews, survey</div>
     </div>
   </div>
 
   <div class="cs">
+
     <div class="cs-grid">
       <h2>The problem</h2>
       <div>
         <p>Students regularly leave a laptop, backpack or phone at their desk to grab coffee or use the restroom. Duke, the University of Illinois and Bentley have all published warnings telling students not to, and students ask on Reddit and Quora whether it's safe. So the worry clearly isn't limited to one campus.</p>
-        <p>No one had studied how safe students actually feel doing it, or what shapes that feeling. That's what we set out to learn.</p>
+        <p>No one had studied how safe students actually feel doing it, or what shapes that feeling. Over one quarter, we used three methods, each building on the last: observation to see what students do, interviews to learn why, and a survey to check whether the patterns held across more students.</p>
       </div>
     </div>
 
     <div class="cs-grid">
-      <h2>Process</h2>
-      <div>
-        <div class="process">
-          <div class="step"><span class="n">01</span><b>Field study</b><small>Observed students in Odegaard, Suzzallo, Allen and the Hans Rosling Center in 30–60 min sessions</small></div>
-          <div class="step"><span class="n">02</span><b>Affinity mapping</b><small>Cleaned and labeled field notes, then grouped them in Figma to find patterns</small></div>
-          <div class="step"><span class="n">03</span><b>Interviews</b><small>Semi-structured, 15–30 min, with students who use these spaces</small></div>
-          <div class="step"><span class="n">04</span><b>Survey</b><small>A follow-up survey to check whether the interview patterns held up across more students</small></div>
-        </div>
-        <p style="margin-top:22px">I led the team through planning, wrote the study's research questions, and helped with observation, interviewing and synthesis. We picked the four sites because they differ on purpose: one student-only library that requires ID to enter, two quiet public libraries, and a bright mixed-use building with a café.</p>
-      </div>
-    </div>
-
-    <div class="cs-grid">
-      <h2>Research questions</h2>
+      <h2>My role</h2>
       <div>
         <ul>
-          <li>What environmental cues already exist that make students feel safe?</li>
-          <li>How long are belongings typically left behind?</li>
-          <li>How do students show a seat is taken when they're not in it?</li>
-          <li>What factors most strongly influence whether a student feels safe leaving their things?</li>
+          <li>Led the team through planning and kept the three studies connected, so each one picked up the open questions from the one before.</li>
+          <li>Wrote the field study's research questions.</li>
+          <li>Observed the 2nd floor of Odegaard Library and Suzzallo Library.</li>
+          <li>Conducted and transcribed one of the four interviews.</li>
+          <li>Built the team's thematic analysis board in FigJam, turning interview quotes into codes and themes.</li>
         </ul>
       </div>
     </div>
 
     <div class="cs-grid">
-      <h2>Key findings</h2>
+      <h2>Scoping</h2>
       <div>
-        <div class="finding">
-          <h3>1. Students trust each other more than they trust security measures</h3>
-          <p>In the ID-gated library, students left open laptops and backpacks out with no visible concern. In interviews, they told us safety comes from knowing the people around them are fellow students, an unspoken agreement that we're all in this together.</p>
-          <blockquote>“If the people around me are students or faculty, I feel it's a safe environment, so I'll leave my stuff.”</blockquote>
+        <p class="phase">Week 1–2 · Brainstorm</p>
+        <p>We started by mapping everything that might affect whether someone leaves their things behind. Three sub-questions came out of it, and they shaped where and what we observed.</p>
+        <div class="figure">
+          <div class="map">
+            <div class="center">How can we help students feel safe temporarily leaving their belongings in UW libraries?</div>
+            <div class="branch"><b>How do different libraries affect the decision?</b>
+              <div class="chips"><span class="chip">Allen · Odegaard · Suzzallo</span><span class="chip">Student-only vs. public</span><span class="chip">Who's present</span><span class="chip">Crowd density</span><span class="chip">Time of day</span><span class="chip">Week of the quarter</span></div></div>
+            <div class="branch"><b>Why would someone leave their belongings?</b>
+              <div class="chips"><span class="chip">“Just a minute”</span><span class="chip">Bathroom</span><span class="chip">Food</span><span class="chip">Water</span><span class="chip">Printing</span><span class="chip">Saving a seat</span><span class="chip">Risk perception</span><span class="chip">Cost vs. benefit</span><span class="chip">Social norms</span></div></div>
+            <div class="branch"><b>What environmental cues influence perceived safety?</b>
+              <div class="chips"><span class="chip">Signage</span><span class="chip">Design of the space</span><span class="chip">Layout</span><span class="chip">Lighting</span><span class="chip">Security</span><span class="chip">Foot traffic</span></div></div>
+          </div>
         </div>
-        <div class="finding">
-          <h3>2. Warning signs didn't change behavior</h3>
-          <p>Allen Library was the only site with theft-warning signs on every desk, but students there behaved the same as students everywhere else. Signs alone don't make people feel safer or act differently.</p>
+        <figcaption>Our brainstorm map, recreated from the team's FigJam board.</figcaption>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Field study</h2>
+      <div>
+        <p class="phase">Weeks 2–4 · Observation at 4 sites</p>
+        <p>Each of us observed a different space for 30–60 minutes. We picked the four sites because they differ on purpose:</p>
+        <ul>
+          <li>Odegaard Library: student-only, Husky Card required to enter, multiple floors and study rooms</li>
+          <li>Suzzallo Library: quiet and open to the public, mostly individual seating</li>
+          <li>Allen Library: two connected buildings, quiet floors, plus a livelier ground-floor collaboration space</li>
+          <li>Hans Rosling Center: bright, mixed classroom and study building with a coffee shop</li>
+        </ul>
+        <p>We sat near the back of each space to see as much of the room as possible. For every student who stepped away, we noted what they left, how they arranged it, whether they told anyone, and how long they were gone. We typed notes live, cleaned them and labeled them by area of focus. We recorded behavior and general appearance only, never names or identifying details, and we didn't interact with anyone.</p>
+
+        <h3 class="sub">Affinity mapping</h3>
+        <p>Next, we put every observation on a sticky note and grouped them by behavior instead of by location. That way, patterns could show up across all four buildings.</p>
+        <div class="figure">
+          <div class="board">
+            <div class="cluster"><b>Left belongings exactly as they were</b>
+              <div class="stickies">
+                <div class="sticky s-v">Left abruptly with only his phone. Laptop, backpack on the chair and an open textbook stayed. Didn't signal anyone nearby. Gone past the end of the session.<small>Suzzallo</small></div>
+                <div class="sticky s-b">Left an iPad, headphones and laptop on the desk, fully visible.<small>Allen</small></div>
+                <div class="sticky s-o">Left laptop open and backpack beside the chair, walked to the restroom. Back in 3 minutes.<small>Hans Rosling Center</small></div>
+              </div></div>
+            <div class="cluster"><b>Asked someone to watch</b>
+              <div class="stickies">
+                <div class="sticky s-g">Gestured to a friend to watch his things, left everything on the desk and took his phone.<small>Odegaard</small></div>
+                <div class="sticky s-v">Leaned over and said something quietly to the student across the table before leaving. Phone face-down, laptop open. Back in 5 minutes.<small>Suzzallo</small></div>
+              </div></div>
+            <div class="cluster"><b>Consolidated or hid items</b>
+              <div class="stickies">
+                <div class="sticky s-b">Closed laptop, stacked notebooks on top, put backpack on the wall side of the chair, away from the walkway.<small>Allen</small></div>
+                <div class="sticky s-v">Slid backpack under the table, left only a closed laptop and a pencil. Back in 5 minutes.<small>Suzzallo</small></div>
+                <div class="sticky s-o">Packed laptop and notes into her bag and zipped it, but left the bag at the seat.<small>Hans Rosling Center</small></div>
+              </div></div>
+          </div>
         </div>
-        <div class="finding">
-          <h3>3. Students worry about losing their seat, not just about theft</h3>
-          <p>The interviews showed us something the observation couldn't. Students use their belongings to show a seat is taken, so packing everything up means risking the spot. When the space gets crowded, like during finals week, some students won't leave at all.</p>
-          <blockquote>“On a busy day, like during finals week, I worry someone might clear my stuff to take the spot, so I try not to leave at all.”</blockquote>
+        <figcaption>A sample of our affinity diagram, recreated from FigJam. Note colors show which researcher made the observation.</figcaption>
+
+        <h3 class="sub">What we saw</h3>
+        <ul>
+          <li>Most students left valuables in plain sight. Open laptops, tablets and backpacks were the norm, especially in ID-gated Odegaard.</li>
+          <li>Most absences were short. Typically 5–6 minutes, likely the restroom. Some students stayed away for 10+ minutes or past the end of the session.</li>
+          <li>Group studiers asked someone to watch their things. Solo studiers almost never did, no matter how long they'd be gone.</li>
+          <li>Warning signs didn't change behavior. Allen had theft-warning signs on every desk, yet students there acted the same as everywhere else.</li>
+        </ul>
+        <p>The open question was why. Observation couldn't tell us whether students felt safe or just didn't think about it. That's what the interviews were for.</p>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Interviews</h2>
+      <div>
+        <p class="phase">Weeks 5–7 · 4 semi-structured interviews</p>
+        <p>Each of us interviewed one UW student who regularly or occasionally uses these spaces. We excluded anyone who couldn't recall studying in them. Sessions ran 15–30 minutes, on campus. The protocol moved from concrete to reflective:</p>
+        <ol style="margin-left:20px;max-width:64ch">
+          <li>Share a time you had to step away and leave your belongings behind.</li>
+          <li>Walk me through what you typically do when you step away.</li>
+          <li>Which belongings would you leave behind, and which would you never leave?</li>
+          <li>When you see someone else's things left at a spot, what does it signal to you?</li>
+          <li>Have you ever used anything to show others you're coming back? How did that go?</li>
+        </ol>
+        <p>Question 4 flips the perspective on purpose. Saving a seat only works if other students read the signal the same way, so we needed both sides.</p>
+
+        <h3 class="sub">Thematic analysis</h3>
+        <p>I pulled quotes from all four transcripts onto a FigJam board, coded each one, then grouped codes into themes under two larger ideas.</p>
+        <div class="figure">
+          <div class="board">
+            <div class="cluster"><b>Trust and social norms: how students judge the people around them</b>
+              <div class="stickies">
+                <div class="sticky s-r"><b>UW identity as a safety proxy</b><br>“If the people around me are students or faculty, I feel it's a safe environment, so I'll leave my stuff.”<small>P1/I2</small></div>
+                <div class="sticky s-r"><b>Social contract</b><br>“Hey, can you watch my stuff? And I was like, sure, I'll watch your stuff.”<small>P1/I3</small></div>
+                <div class="sticky s-r"><b>Known vs. unknown people</b><br>“I don't feel like talking to some random dudes, like, hey, you wanna watch my stuff.”<small>P1/I3</small></div>
+                <div class="sticky s-r"><b>Relaxing over time</b><br>“At the very beginning, I was more cautious… recently, I've just been much more relaxed.”<small>P2/I1</small></div>
+              </div></div>
+            <div class="cluster"><b>Risk assessment: what students weigh before stepping away</b>
+              <div class="stickies">
+                <div class="sticky s-y"><b>Uncertainty is the real discomfort</b><br>“It's not really like a fear that someone is going to take something. It's more that I just like knowing where my stuff is.”<small>P1/I4</small></div>
+                <div class="sticky s-y"><b>Crowds change the calculation</b><br>“On a busy day, like during finals week, I worry someone might clear my stuff to take the spot.”<small>P1/I2</small></div>
+                <div class="sticky s-y"><b>Exclusivity matters</b><br>“If this is a cafe, I might have more problem leaving stuff there.”<small>P2/I1</small></div>
+              </div></div>
+          </div>
         </div>
-        <div class="finding">
-          <h3>4. Students rank their belongings by importance</h3>
-          <p>Wallets, phones and laptops stay with students. Jackets are left to hold a seat, but other students don't always respect that. People need a way to save a seat that doesn't put anything valuable at risk.</p>
+        <figcaption>Selected codes and quotes from my thematic analysis board, recreated from FigJam. P = participant, I = interviewer.</figcaption>
+
+        <h3 class="sub">What we learned</h3>
+        <ul>
+          <li>Being a UW student works as a trust signal. Students feel safe because the people around them are other students. That explains why Odegaard's ID gate mattered more than Allen's signs.</li>
+          <li>Students don't just fear theft, they also fear losing their seat. Belongings are how students hold a seat, so packing up means giving the spot away.</li>
+          <li>Students rank their belongings. Wallets, phones and laptops stay with them. Jackets hold a seat, but other students don't always respect that.</li>
+          <li>Students proposed their own solutions. One suggested “a locker right at the desk… lock it with your student ID.” Another pushed back on shared lockers: “kind of a hassle… just to go to the bathroom for like two minutes.”</li>
+        </ul>
+        <p>Four interviews gave us depth but not numbers. We wrote the survey to test these patterns with more students.</p>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Survey</h2>
+      <div>
+        <p class="phase">Weeks 8–10 · 12-question survey · 17 respondents</p>
+        <p>We built a 12-question Google Form and recruited UW students who study alone in campus spaces through HCDE communities and by email. Responses were anonymous. Each question was tied to an interview finding we wanted to confirm (is it common?), elaborate (why?), or extend (would a design help?). The survey mixed multiple-choice, 1–5 rating, ranking and open-ended questions.</p>
+
+        <div class="stats">
+          <div class="stat"><div class="num">16 of 17</div><div class="lbl">felt safer leaving belongings in a student-only space than a public one. None felt less safe.</div></div>
+          <div class="stat"><div class="num">17 of 17</div><div class="lbl">read belongings left at a desk as “taken, someone is returning.” The social contract held for everyone.</div></div>
+          <div class="stat"><div class="num">7 of 17</div><div class="lbl">take only their valuables and leave the rest. 4 take everything, 4 said it depends, and 2 leave it all.</div></div>
         </div>
+
+        <div class="figure chart">
+          <h4>How safe do you feel leaving your belongings?</h4>
+          <p class="note">Number of respondents giving each rating, from 1 (not safe at all) to 5 (completely safe). n = 17. Average: 3.6 in a student-only space vs. 1.8 in a public space.</p>
+          <div class="legend"><span><i style="background:#3a6fc4"></i>Student-only space (e.g., Odegaard)</span><span><i style="background:#d6453d"></i>Public space (e.g., café, common area)</span></div>
+          <div class="bars pair">
+            <span class="lab">5 · Completely safe</span><div><div class="track"><div class="bar blue" style="width:62.5%" title="Student-only: 5 respondents"></div><span class="val" style="left:calc(62.5% + 6px)">5</span></div><div class="pair-gap"></div><div class="track"><div class="bar" style="width:0%" title="Public: 0 respondents"></div><span class="val" style="left:6px">0</span></div></div>
+            <span class="lab">4</span><div><div class="track"><div class="bar blue" style="width:62.5%" title="Student-only: 5 respondents"></div><span class="val" style="left:calc(62.5% + 6px)">5</span></div><div class="pair-gap"></div><div class="track"><div class="bar" style="width:25%" title="Public: 2 respondents"></div><span class="val" style="left:calc(25% + 6px)">2</span></div></div>
+            <span class="lab">3</span><div><div class="track"><div class="bar blue" style="width:37.5%" title="Student-only: 3 respondents"></div><span class="val" style="left:calc(37.5% + 6px)">3</span></div><div class="pair-gap"></div><div class="track"><div class="bar" style="width:12.5%" title="Public: 1 respondent"></div><span class="val" style="left:calc(12.5% + 6px)">1</span></div></div>
+            <span class="lab">2</span><div><div class="track"><div class="bar blue" style="width:50%" title="Student-only: 4 respondents"></div><span class="val" style="left:calc(50% + 6px)">4</span></div><div class="pair-gap"></div><div class="track"><div class="bar" style="width:75%" title="Public: 6 respondents"></div><span class="val" style="left:calc(75% + 6px)">6</span></div></div>
+            <span class="lab">1 · Not safe at all</span><div><div class="track"><div class="bar blue" style="width:0%" title="Student-only: 0 respondents"></div><span class="val" style="left:6px">0</span></div><div class="pair-gap"></div><div class="track"><div class="bar" style="width:100%" title="Public: 8 respondents"></div><span class="val" style="left:calc(100% - 18px);color:#fff">8</span></div></div>
+          </div>
+        </div>
+        <figcaption>This confirmed our strongest interview finding: being in a space limited to UW students is what makes students feel safe.</figcaption>
+
+        <div class="figure chart">
+          <h4>What are you most comfortable leaving behind?</h4>
+          <p class="note">Number of respondents who selected each item (select all that apply). n = 17.</p>
+          <div class="bars">
+            <span class="lab">Water bottle</span><div class="track"><div class="bar" style="width:88%" title="15 of 17"></div><span class="val" style="left:calc(88% + 6px)">15</span></div>
+            <span class="lab">Jacket</span><div class="track"><div class="bar" style="width:82%" title="14 of 17"></div><span class="val" style="left:calc(82% + 6px)">14</span></div>
+            <span class="lab">Notebook / pencil case</span><div class="track"><div class="bar" style="width:76%" title="13 of 17"></div><span class="val" style="left:calc(76% + 6px)">13</span></div>
+            <span class="lab">Backpack</span><div class="track"><div class="bar" style="width:65%" title="11 of 17"></div><span class="val" style="left:calc(65% + 6px)">11</span></div>
+            <span class="lab">Headphones</span><div class="track"><div class="bar" style="width:29%" title="5 of 17"></div><span class="val" style="left:calc(29% + 6px)">5</span></div>
+            <span class="lab">Laptop</span><div class="track"><div class="bar" style="width:24%" title="4 of 17"></div><span class="val" style="left:calc(24% + 6px)">4</span></div>
+            <span class="lab">Keys</span><div class="track"><div class="bar" style="width:18%" title="3 of 17"></div><span class="val" style="left:calc(18% + 6px)">3</span></div>
+            <span class="lab">Phone</span><div class="track"><div class="bar" style="width:6%" title="1 of 17"></div><span class="val" style="left:calc(6% + 6px)">1</span></div>
+            <span class="lab">Wallet</span><div class="track"><div class="bar" style="width:0%" title="0 of 17"></div><span class="val" style="left:6px">0</span></div>
+          </div>
+        </div>
+        <figcaption>The item ranking from the interviews held up. Low-value items stay at the desk, while wallets, phones and keys almost never do.</figcaption>
+
+        <div class="figure chart">
+          <h4>What's the clearest sign that a seat is taken?</h4>
+          <p class="note">Number of respondents who ranked each signal #1 out of 5. n = 17.</p>
+          <div class="bars">
+            <span class="lab">Laptop or tablet</span><div class="track"><div class="bar" style="width:100%" title="Ranked #1 by 9 of 17"></div><span class="val" style="left:calc(100% - 18px);color:#fff">9</span></div>
+            <span class="lab">Note or sign</span><div class="track"><div class="bar" style="width:89%" title="Ranked #1 by 8 of 17"></div><span class="val" style="left:calc(89% + 6px)">8</span></div>
+            <span class="lab">Backpack</span><div class="track"><div class="bar" style="width:0%" title="Ranked #1 by 0"></div><span class="val" style="left:6px">0</span></div>
+            <span class="lab">Jacket</span><div class="track"><div class="bar" style="width:0%" title="Ranked #1 by 0"></div><span class="val" style="left:6px">0</span></div>
+            <span class="lab">Water bottle</span><div class="track"><div class="bar" style="width:0%" title="Ranked #1 by 0; ranked last by nearly everyone"></div><span class="val" style="left:6px">0</span></div>
+          </div>
+        </div>
+        <figcaption>This was the key tension. The clearest seat-saver is a laptop, which is exactly what students least want to leave. Almost as many students trusted a note or sign, which suggests a designed signal could replace leaving valuables behind.</figcaption>
+
+        <h3 class="sub">Other results</h3>
+        <ul>
+          <li>Crowds split students. 7 felt more comfortable in a busy space (more people around), while 5 felt less comfortable (their seat might get taken). Crowd density cuts both ways, which matches the interviews.</li>
+          <li>Asking a stranger isn't a real solution. Comfort averaged 2.8 out of 5.</li>
+          <li>Interest in our designs was real but moderate. In-desk lockers averaged 3.4 out of 5 (7 rated them 4–5), and a seat indicator averaged 3.2 (8 rated it 4–5). Neither was a slam dunk, so any solution has to take almost no effort to use.</li>
+          <li>Theft is still the biggest worry. When asked to name their biggest concern, most respondents described theft or losing their things. Two mentioned items being moved or their seat being taken.</li>
+          <li>In their own words, students described the same rule we'd seen: “I leave everything behind when I'm in Odegaard since people need to show their Husky card to get in.”</li>
+        </ul>
       </div>
     </div>
 
@@ -90,19 +281,25 @@
       <h2>Recommendations</h2>
       <div>
         <div class="recs">
-          <div class="rec"><b>In-desk locker</b><p>A small compartment at each desk that unlocks with a Husky Card tap. It keeps valuables secure, and a locked compartment also shows the seat is taken.</p></div>
-          <div class="rec"><b>“Be right back” signal</b><p>A small light or flip-tab on the desk so the seat clearly looks occupied without the student leaving anything behind.</p></div>
-          <div class="rec"><b>Pilot during finals</b><p>Test first in Odegaard during midterms and finals, when seats are hardest to find, then expand to other buildings.</p></div>
+          <div class="rec"><b>In-desk locker</b><p>A small compartment at each desk that unlocks with a Husky Card tap. It keeps valuables secure, and a locked compartment also shows the seat is taken, so students don't have to choose between the two.</p></div>
+          <div class="rec"><b>“Be right back” signal</b><p>A small light or flip-tab on the desk. 8 of 17 already rank a note or sign as the clearest seat-saver, so a standard version can replace leaving a laptop out.</p></div>
+          <div class="rec"><b>Pilot during finals</b><p>Start in Odegaard during midterms and finals, when seats are scarcest and students are most afraid to leave. Expand to other buildings if it works.</p></div>
         </div>
-        <p style="margin-top:20px">One participant's pushback changed our design. A shared bank of lockers would be “kind of a hassle… just to go to the bathroom for like two minutes,” so we put the storage within arm's reach, at the desk itself.</p>
+        <p style="margin-top:20px">Both designs use the Husky Card on purpose. Being a UW student was the strongest source of trust across all three studies, so the solution should build on that trust, not replace it with a new system.</p>
       </div>
     </div>
 
     <div class="cs-grid">
       <h2>Reflection</h2>
       <div>
-        <p>Observation tells you what people do but not why. In the field, we couldn't correlate the setting with how safe students felt. The interviews connected the two: students feel safe because of who else is in the space, not because of any physical security feature.</p>
-        <p>If I ran this study again, I'd observe the same spaces at different times, such as finals week, and for longer sessions, since 30 minutes misses behavior that repeats.</p>
+        <p>Combining methods paid off. Observation showed what students did, interviews explained why, and the survey showed which patterns were common. Odegaard's ID gate is a good example: we noticed it in the field, students explained it in the interviews, and 16 of 17 survey respondents confirmed it.</p>
+        <p>Limitations:</p>
+        <ul>
+          <li>Observation sessions were 30–60 minutes, too short to see the same student come and go more than once.</li>
+          <li>Seventeen respondents, recruited mostly through HCDE channels, can confirm a direction but not represent all of UW.</li>
+          <li>We only studied regular weeks.</li>
+        </ul>
+        <p>Next time, I'd observe the same spaces during finals week. That's when seat scarcity peaks and students said they're least willing to leave.</p>
       </div>
     </div>
   </div>
