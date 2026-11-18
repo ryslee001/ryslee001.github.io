@@ -1,13 +1,13 @@
 :root{
   --bg:#121214; --ink:#ececec; --muted:#a3a3ab; --line:#2e2e34;
   --accent:#d6453d; --accent-soft:#3a1f1d; --card:#1c1c1f; --raise:#26262b;
-  --serif:"Times New Roman",Times,serif; --sans:"Times New Roman",Times,serif;
+  --serif:"Source Serif 4","Times New Roman",serif; --sans:"Source Serif 4","Times New Roman",serif;
   --max:1040px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{color-scheme:dark}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:18px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font:17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
