@@ -98,7 +98,7 @@ footer .small{margin-top:40px;font-size:13px;color:var(--muted)}
 .finding{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:22px 24px;margin-bottom:16px;max-width:70ch}
 .finding h3{font-family:var(--serif);font-weight:500;font-size:21px;margin-bottom:8px}
 .finding p{margin-bottom:8px;font-size:16px}
-.finding blockquote{font-style:normal;color:var(--muted);font-size:15px;border-left:2px solid var(--line);padding-left:12px;margin-top:10px}
+.finding blockquote{font-style:italic;color:var(--muted);font-size:15px;border-left:2px solid var(--line);padding-left:12px;margin-top:10px}
 .recs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .rec{background:var(--ink);color:var(--bg);border-radius:14px;padding:22px}
 .rec b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;margin-bottom:8px}
