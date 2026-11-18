@@ -57,11 +57,11 @@ h2.section{font-family:var(--serif);font-weight:500;font-size:34px;letter-spacin
 .about{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
 .about p{margin-bottom:16px}
 .side{display:flex;flex-direction:column;gap:22px}
-.headshot{width:100%;max-width:300px;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:16px;border:1px solid var(--line)}
+.headshot{width:100%;max-width:300px;height:auto;border-radius:16px;border:1px solid var(--line)}
 .facts{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px}
 .facts h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
 .facts h4:first-child{margin-top:0}
-.facts ul{list-style:none}
+.facts ul{list-style:disc;padding-left:20px}
 .facts li{padding:3px 0;font-size:15px}
 
 /* skills */
