@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bubble Sensor — Ryan Lee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .figs{display:grid;grid-template-columns:1fr 1.4fr;gap:16px;margin:8px 0 6px}
+  .fig{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .fig img{width:100%;height:100%;object-fit:cover}
+  .fig.contain img{object-fit:contain;padding:14px;background:#fff}
+  figcaption{font-size:13px;color:var(--muted);margin:8px 0 18px}
+  @media (max-width:820px){.figs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="index.html">Ryan Lee<span>.</span></a>
+  <nav><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="cs-hero">
+    <a class="back" href="index.html#work">← All work</a>
+    <p class="eyebrow">OCEAN 261 · Ocean Technology Design-Build Studio · Spring 2025</p>
+    <h1>Bubble Sensor: a floating instrument built from scratch</h1>
+    <p class="q">Can the bubbles on the water's surface stand in for dissolved oxygen levels? Our team designed, built and deployed a low-cost floating sensor to find out.</p>
+    <div class="meta">
+      <div><span>My role</span>CAD designer</div>
+      <div><span>Team</span>6 students, mixed 261/361/461</div>
+      <div><span>Duration</span>5 weeks of build</div>
+      <div><span>Tools</span>Onshape CAD, Fritzing, 3D printing</div>
+    </div>
+  </div>
+
+  <div class="cs">
+    <div class="cs-grid">
+      <h2>The question</h2>
+      <div>
+        <p>As more atmospheric gas enters the ocean, dissolved gas levels in local waters rise, which can harm aquatic life. Surface bubbles, from waves or passing boats, are one way gas gets into the water. If bubble coverage tracks dissolved oxygen (DO), a cheap sensor watching the surface could help monitor it.</p>
+        <p>Our hypothesis: more surface bubbles go with higher DO in surface water. To test it, we built an instrument to measure bubbles and compared its readings with DO data from a YSI EXO sonde (a professional water-quality sensor) placed next to it.</p>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>My contribution</h2>
+      <div>
+        <p>This studio mixed students from three course levels. I was in OCEAN 261 and worked on the <b>CAD design</b>, modeling the instrument's physical parts in Onshape. Students in OCEAN 361 and 461 led the data analysis and wrote the final results.</p>
+        <p>The design problem was to fit a microcontroller, battery, breadboard and two sensors into a housing that sits at the center of a floating tripod, stays dry and holds the color sensor at a fixed height above the water. We chose a pyramid shape so the housing would follow the tripod's geometry and the parts would fit inside.</p>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>The build</h2>
+      <div>
+        <div class="figs">
+          <div class="fig"><img src="images/bubble-tripod.jpg" alt="PVC tripod frame with yellow buoys at each foot, resting on a table"></div>
+          <div class="fig contain"><img src="images/bubble-cad.png" alt="Three CAD views of the triangular pyramid electronics housing"></div>
+        </div>
+        <figcaption>Left: the PVC tripod frame with buoys at each foot. Right: the 3D-printed electronics housing, designed in Onshape.</figcaption>
+        <ul>
+          <li><b>Frame:</b> a tripod has the most stable shape for holding a sensor at a constant height above moving water. We built it from PVC with a buoy glued to each foot.</li>
+          <li><b>Housing (my CAD work):</b> a 3D-printed pyramid that matches the tripod's shape and holds all the electronics, with openings in the bottom for the sensor cables.</li>
+          <li><b>Sensors:</b> a color sensor (TCS34725) 10 cm above the water detects the white of the bubbles. A light sensor (TSL2591) 10 cm below the surface measures how much light gets through the bubbles. A real-time clock (ZS-042) timestamps every reading. Both sensors were sealed in epoxy to keep water out.</li>
+        </ul>
+        <div class="fig contain" style="max-width:640px;margin-top:10px"><img src="images/bubble-wiring.png" alt="Fritzing wiring diagram: battery pack, microcontroller, color sensor, light sensor and clock on a breadboard"></div>
+        <figcaption>Wiring diagram: a battery-powered Adafruit microcontroller connected to the color sensor, light sensor and clock.</figcaption>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Process</h2>
+      <div>
+        <div class="process" style="grid-template-columns:repeat(5,1fr)">
+          <div class="step"><span class="n">WK 5</span><b>Test</b><small>First tests of the color sensor</small></div>
+          <div class="step"><span class="n">WK 6</span><b>Wire</b><small>Finished the wiring diagrams. First calibration of both sensors</small></div>
+          <div class="step"><span class="n">WK 7</span><b>Adjust</b><small>Color readings were unreliable, so we added color temperature alongside RGB</small></div>
+          <div class="step"><span class="n">WK 8</span><b>Assemble</b><small>Sealed the sensors and put the housing together. First deployment off the Marine Sciences Building dock</small></div>
+          <div class="step"><span class="n">WK 9</span><b>Deploy</b><small>Second deployment site: the Ballard Locks</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Calibration</h2>
+      <div>
+        <p><b>Color sensor:</b> we photographed a tray of water covered with known amounts of bubbles (100%, 80%, 50% and 0%) from 5.5 cm above. We took each reading twice and matched it to a color temperature chart.</p>
+        <p><b>Light sensor:</b> we ran two tests. In the first, the sensor sat in a dark box while we increased the brightness of a light 26 cm away, step by step. In the second, we kept the light at fixed brightness and moved it away from the sensor in 10 cm steps to see how distance affected the readings.</p>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Problems we solved</h2>
+      <div>
+        <ul>
+          <li>The two printed halves of the housing didn't fit together. We tried drilling, sanding, hot glue and epoxy before settling on a tight fit sealed with tape. This taught me to design for real printer tolerances, not just what fits on screen.</li>
+          <li>The L-brackets that attached the housing to the frame didn't reach the PVC. We drilled new holes and screwed the brackets in place.</li>
+          <li>The light sensor was supposed to hang from the housing, but we moved it to the PVC frame near the buoys so it stayed upright and at a steady depth.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Outcome</h2>
+      <div>
+        <p>The data analysis and final findings were done by the upper-level students, so this page covers the build and the first deployment. The full unit floated and ran off the dock. The code started automatically when the battery was plugged in, and all three sensors worked together. But only the first two minutes of data were saved, and <b>while the sensor was out on the water, we had no way to tell it had stopped recording.</b></p>
+        <div class="callout">
+          <p><b>What I took from it:</b> the biggest failure wasn't a broken part. It was that the instrument gave its users no feedback. That's a usability problem, and it's part of why I moved into Human Centered Design.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <h2>Recommended changes</h2>
+      <div>
+        <div class="recs">
+          <div class="rec"><b>Show its status</b><p>Add an LED that lights up while it's sampling, so anyone on the dock can see it's working.</p></div>
+          <div class="rec"><b>Monitor remotely</b><p>Connect it to Wi-Fi (via WebREPL) so the team can watch the data live instead of finding out afterward.</p></div>
+          <div class="rec"><b>Easy to rebuild</b><p>Use an off-the-shelf waterproof enclosure instead of a custom 3D print, so anyone can build one without CAD skills.</p></div>
+        </div>
+        <p style="margin-top:20px">The code, CAD files and parts list are in the team's <a href="https://github.com/mhavely/ocean-n61-bubble-sensor">public GitHub repository</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="next">
+    <a href="car-picker.html"><span>Previous</span>← Car Picker Helper</a>
+    <a href="index.html#work" style="text-align:right"><span>Back</span>All work →</a>
+  </div>
+</main>
+</body>
+</html>
