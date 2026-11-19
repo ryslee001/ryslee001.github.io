@@ -153,3 +153,4 @@ footer .small{margin-top:40px;font-size:13px;color:var(--muted)}
 [data-theme="dark"] .shot,[data-theme="dark"] .fig{border-color:var(--line)}
 
 footer .footbar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer .contact-note{color:var(--muted);font-size:17px;line-height:1.6;margin:4px 0 6px}
